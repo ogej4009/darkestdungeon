@@ -1,0 +1,13 @@
+
+blood_splatter.sprite.png
+size: 313,286
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+blood_splatter
+  rotate: false
+  xy: 2, 2
+  size: 309, 282
+  orig: 309, 282
+  offset: 0, 0
+  index: -1

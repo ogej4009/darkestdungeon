@@ -1,0 +1,3 @@
+Idle -> 0.03f
+Walk -> 0.03f
+SkillOne -> 0.02f

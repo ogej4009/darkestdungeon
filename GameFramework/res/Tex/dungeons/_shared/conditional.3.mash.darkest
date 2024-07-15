@@ -1,0 +1,2 @@
+hall: .chance 0.00 .types shambler_B .darkness_range 0 0 .limit 1   .can_be_ambush false
+hall: .chance 0.00 .types collector_B .inventory_valid_item_percent_range 0.65 1.0 .limit 1 .can_be_ambush false

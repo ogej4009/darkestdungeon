@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClInclude Include="TextReader.h" />
+    <ClInclude Include="FrameRender3d.h" />
+    <ClInclude Include="TitleScene.h" />
+    <ClInclude Include="DungeonScene.h" />
+    <ClInclude Include="Combat.h" />
+    <ClInclude Include="GameMap.h" />
+    <ClInclude Include="HeroFsm.h" />
+    <ClInclude Include="MonsterFsm.h" />
+    <ClInclude Include="SpineTextureLoader.h" />
+    <ClInclude Include="Hero.h" />
+    <ClInclude Include="SoftRenderFrame.h" />
+    <ClInclude Include="TargetRender.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="FrameRender3d.cpp" />
+    <ClCompile Include="TitleScene.cpp" />
+    <ClCompile Include="DungeonScene.cpp" />
+    <ClCompile Include="Combat.cpp" />
+    <ClCompile Include="GameMain.cpp" />
+    <ClCompile Include="GameMap.cpp" />
+    <ClCompile Include="HeroFsm.cpp" />
+    <ClCompile Include="MonsterFsm.cpp" />
+    <ClCompile Include="SpineTextureLoader.cpp" />
+    <ClCompile Include="Hero.cpp" />
+    <ClCompile Include="SoftRenderFrame.cpp" />
+    <ClCompile Include="TargetRender.cpp" />
+    <ClCompile Include="TextReader.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="temp.txt" />
+    <Text Include="tempCode.txt" />
+  </ItemGroup>
+</Project>

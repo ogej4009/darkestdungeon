@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>17.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{b953b4c8-7c88-417b-a4a1-a45a10b77351}</ProjectGuid>
+    <RootNamespace>GameEngine</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <EnableUnitySupport>true</EnableUnitySupport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <EnableUnitySupport>true</EnableUnitySupport>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>..\bin\$(Configuration)\$(PlatformTarget)\</OutDir>
+    <IntDir>..\bin\$(Configuration)\$(PlatformTarget)\$(ProjectName)\</IntDir>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);..\GameBase\;..\tp\FW1FontWrapper-master\FW1FontWrapper\Source\;..\tp\DirectXTex-main\DirectXTex\;</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>..\bin\$(Configuration)\$(PlatformTarget)\</OutDir>
+    <IntDir>..\bin\$(Configuration)\$(PlatformTarget)\$(ProjectName)\</IntDir>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);..\GameBase\;..\tp\FW1FontWrapper-master\FW1FontWrapper\Source\;..\tp\DirectXTex-main\DirectXTex\;</IncludePath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="GameAni.h" />
+    <ClInclude Include="GameSprite.h" />
+    <ClInclude Include="GameDebugEn.h" />
+    <ClInclude Include="GameBlend.h" />
+    <ClInclude Include="GameCam.h" />
+    <ClInclude Include="GameConstBuffer.h" />
+    <ClInclude Include="GameCol.h" />
+    <ClInclude Include="GameColMgr.h" />
+    <ClInclude Include="GameDevBuffer.h" />
+    <ClInclude Include="GameDepthStencil.h" />
+    <ClInclude Include="GameFreeCam.h" />
+    <ClInclude Include="GameActor.h" />
+    <ClInclude Include="GameComponent.h" />
+    <ClInclude Include="GameDevice.h" />
+    <ClInclude Include="GameFont.h" />
+    <ClInclude Include="GameObjRef.h" />
+    <ClInclude Include="GameScene.h" />
+    <ClInclude Include="GameGrid.h" />
+    <ClInclude Include="GameIdxBuffer.h" />
+    <ClInclude Include="GameImage.h" />
+    <ClInclude Include="GameJsonReader.h" />
+    <ClInclude Include="GameLogic.h" />
+    <ClInclude Include="GameMesh.h" />
+    <ClInclude Include="GameMiniMap.h" />
+    <ClInclude Include="GamePixShader.h" />
+    <ClInclude Include="GameRasterizer.h" />
+    <ClInclude Include="GameRenderer.h" />
+    <ClInclude Include="GameRenderMgr.h" />
+    <ClInclude Include="GameRenderMaker.h" />
+    <ClInclude Include="GameShader.h" />
+    <ClInclude Include="GameSampler.h" />
+    <ClInclude Include="GameTexture.h" />
+    <ClInclude Include="GameTile.h" />
+    <ClInclude Include="GameTransform.h" />
+    <ClInclude Include="GameVtxBuffer.h" />
+    <ClInclude Include="GameVtxHeader.h" />
+    <ClInclude Include="GameVtxShader.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="GameColChk.cpp" />
+    <ClCompile Include="GameAni.cpp" />
+    <ClCompile Include="GameSprite.cpp" />
+    <ClCompile Include="GameDebugEn.cpp" />
+    <ClCompile Include="GameBlend.cpp" />
+    <ClCompile Include="GameCam.cpp" />
+    <ClCompile Include="GameConstBuffer.cpp" />
+    <ClCompile Include="GameCol.cpp" />
+    <ClCompile Include="GameColMgr.cpp" />
+    <ClCompile Include="GameDevBuffer.cpp" />
+    <ClCompile Include="GameDepthStencil.cpp" />
+    <ClCompile Include="GameFreeCam.cpp" />
+    <ClCompile Include="GameActor.cpp" />
+    <ClCompile Include="GameComponent.cpp" />
+    <ClCompile Include="GameDevice.cpp" />
+    <ClCompile Include="GameDeviceBlendInit.cpp" />
+    <ClCompile Include="GameDeviceDepthStencilInit.cpp" />
+    <ClCompile Include="GameDeviceFontInit.cpp" />
+    <ClCompile Include="GameDeviceMeshInit.cpp" />
+    <ClCompile Include="GameDeviceRasterizerInit.cpp" />
+    <ClCompile Include="GameDeviceShaderInit.cpp" />
+    <ClCompile Include="GameDeviceSamplerInit.cpp" />
+    <ClCompile Include="GameDeviceRenderMakerInit.cpp" />
+    <ClCompile Include="GameFont.cpp" />
+    <ClCompile Include="GameObjRef.cpp" />
+    <ClCompile Include="GameScene.cpp" />
+    <ClCompile Include="GameGrid.cpp" />
+    <ClCompile Include="GameIdxBuffer.cpp" />
+    <ClCompile Include="GameImage.cpp" />
+    <ClCompile Include="GameJsonReader.cpp" />
+    <ClCompile Include="GameLogic.cpp" />
+    <ClCompile Include="GameMesh.cpp" />
+    <ClCompile Include="GameMiniMap.cpp" />
+    <ClCompile Include="GamePixShader.cpp" />
+    <ClCompile Include="GameRasterizer.cpp" />
+    <ClCompile Include="GameRenderer.cpp" />
+    <ClCompile Include="GameRenderMgr.cpp" />
+    <ClCompile Include="GameRenderMaker.cpp" />
+    <ClCompile Include="GameShader.cpp" />
+    <ClCompile Include="GameSampler.cpp" />
+    <ClCompile Include="GameTexture.cpp" />
+    <ClCompile Include="GameTile.cpp" />
+    <ClCompile Include="GameTransform.cpp" />
+    <ClCompile Include="GameVtxBuffer.cpp" />
+    <ClCompile Include="GameVtxShader.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

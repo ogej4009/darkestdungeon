@@ -1,0 +1,374 @@
+
+float S3DRENDERFRAME::m_Timer = 0.0f;
+
+float	S3DSpeed = 100.0F;
+SVEC4	S3DScale = { 1.0f, 1.0F, 1.0F };
+SVEC4	S3DRot = { 0, 0, 0.0f };
+SVEC4	S3DPos = { -4.0f, 0.0F, 0.0f };
+float	S3DNear = 0.1f; // 근평면 거리
+float	S3DFar = 10000.0f; // 원평면 거리
+float	S3DWidth = 8.0; // 너비
+float	S3DHeight = 6.0f; // 높이
+float	S3DFov = 60.0f; // 시야각
+SVEC4	S3DViewPos = { 0.0f, 0.0F, -5.0F };
+SVEC4	S3DViewRot = { 0.0f, 0.0F, 0.0F };
+SMAT	S3DMScale;
+SMAT	S3DMRotX;
+SMAT	S3DMRotY;
+SMAT	S3DMRotZ;
+SMAT	S3DMRot;
+SMAT	S3DMPos;
+SMAT	S3DW;
+SMAT	S3DWVP;
+SMAT	S3DMVIEWPORT;
+SMAT	S3DMViewRotX;
+SMAT	S3DMViewRotY;
+SMAT	S3DMViewRotZ;
+SMAT	S3DMViewRot;
+SMAT	S3DMView;
+SMAT	S3DMProj;
+float	S3DDeg = 0.0f;
+
+----------------------------
+
+
+	if (true == SGAMEINPUT::Press(L"RMOVE"))
+	{
+		S3DPos.x += S3DSpeed * SGAMETIME::DeltaTime();
+	}
+	if (true == SGAMEINPUT::Press(L"LMOVE"))
+	{
+		S3DPos.x -= S3DSpeed * SGAMETIME::DeltaTime();
+	}
+	if (true == SGAMEINPUT::Press(L"UMOVE"))
+	{
+		S3DPos.y += S3DSpeed * SGAMETIME::DeltaTime();
+	}
+	if (true == SGAMEINPUT::Press(L"DMOVE"))
+	{
+		S3DPos.y -= S3DSpeed * SGAMETIME::DeltaTime();
+	}
+	if (true == SGAMEINPUT::Press(L"FMOVE"))
+	{
+		S3DPos.z += S3DSpeed * SGAMETIME::DeltaTime();
+	}
+	if (true == SGAMEINPUT::Press(L"BMOVE"))
+	{
+		S3DPos.z -= S3DSpeed * SGAMETIME::DeltaTime();
+	}
+
+	if (true == SGAMEINPUT::Press(L"ROTX"))
+	{
+		S3DRot.x += S3DSpeed * SGAMETIME::DeltaTime();
+	}
+	if (true == SGAMEINPUT::Press(L"ROTY"))
+	{
+		S3DRot.y += S3DSpeed * SGAMETIME::DeltaTime();
+	}
+	if (true == SGAMEINPUT::Press(L"ROTZ"))
+	{
+		S3DRot.z += S3DSpeed * SGAMETIME::DeltaTime();
+	}
+	if (true == SGAMEINPUT::Press(L"ROTMX"))
+	{
+		S3DRot.x -= S3DSpeed * SGAMETIME::DeltaTime();
+	}
+	if (true == SGAMEINPUT::Press(L"ROTMY"))
+	{
+		S3DRot.y -= S3DSpeed * SGAMETIME::DeltaTime();
+	}
+	if (true == SGAMEINPUT::Press(L"ROTMZ"))
+	{
+		S3DRot.z -= S3DSpeed * SGAMETIME::DeltaTime();
+	}
+
+	if (true == SGAMEINPUT::Press(L"SCALX"))
+	{
+		S3DScale.x += S3DSpeed * SGAMETIME::DeltaTime();
+	}
+	if (true == SGAMEINPUT::Press(L"SCALY"))
+	{
+		S3DScale.y += S3DSpeed * SGAMETIME::DeltaTime();
+	}
+	if (true == SGAMEINPUT::Press(L"SCALZ"))
+	{
+		S3DScale.z += S3DSpeed * SGAMETIME::DeltaTime();
+	}
+	if (true == SGAMEINPUT::Press(L"SCALMX"))
+	{
+		S3DScale.x -= S3DSpeed * SGAMETIME::DeltaTime();
+	}
+	if (true == SGAMEINPUT::Press(L"SCALMY"))
+	{
+		S3DScale.y -= S3DSpeed * SGAMETIME::DeltaTime();
+	}
+	if (true == SGAMEINPUT::Press(L"SCALMZ"))
+	{
+		S3DScale.z -= S3DSpeed * SGAMETIME::DeltaTime();
+	}
+
+	// CAM
+	if (true == SGAMEINPUT::Press(L"RCAMMOVE"))
+	{
+		S3DViewPos.x += S3DSpeed * SGAMETIME::DeltaTime();
+	}
+	if (true == SGAMEINPUT::Press(L"LCAMMOVE"))
+	{
+		S3DViewPos.x -= S3DSpeed * SGAMETIME::DeltaTime();
+	}
+	if (true == SGAMEINPUT::Press(L"UCAMMOVE"))
+	{
+		S3DViewPos.y += S3DSpeed * SGAMETIME::DeltaTime();
+	}
+	if (true == SGAMEINPUT::Press(L"DCAMMOVE"))
+	{
+		S3DViewPos.y -= S3DSpeed * SGAMETIME::DeltaTime();
+	}
+	if (true == SGAMEINPUT::Press(L"FCAMMOVE"))
+	{
+		S3DViewPos.z += S3DSpeed * SGAMETIME::DeltaTime();
+	}
+	if (true == SGAMEINPUT::Press(L"BCAMMOVE"))
+	{
+		S3DViewPos.z -= S3DSpeed * SGAMETIME::DeltaTime();
+	}
+
+	if (true == SGAMEINPUT::Press(L"CAMROTX"))
+	{
+		S3DViewRot.x += S3DSpeed * SGAMETIME::DeltaTime();
+	}
+	if (true == SGAMEINPUT::Press(L"CAMROTY"))
+	{
+		S3DViewRot.y += S3DSpeed * SGAMETIME::DeltaTime();
+	}
+	if (true == SGAMEINPUT::Press(L"CAMROTZ"))
+	{
+		S3DViewRot.z += S3DSpeed * SGAMETIME::DeltaTime();
+	}
+	if (true == SGAMEINPUT::Press(L"CAMROTMX"))
+	{
+		S3DViewRot.x -= S3DSpeed * SGAMETIME::DeltaTime();
+	}
+	if (true == SGAMEINPUT::Press(L"CAMROTMY"))
+	{
+		S3DViewRot.y -= S3DSpeed * SGAMETIME::DeltaTime();
+	}
+	if (true == SGAMEINPUT::Press(L"CAMROTMZ"))
+	{
+		S3DViewRot.z -= S3DSpeed * SGAMETIME::DeltaTime();
+	}
+
+	----------------------------------------------------
+
+	LogicUpdate();
+
+	m_Timer += SGAMETIME::DeltaTime();
+	float cosValue = cos(m_Timer);
+	float sinValue = sin(m_Timer);
+
+	S3DMScale.Scale(S3DScale);
+
+	S3DMRotX.RotXDeg(S3DRot.x);
+	S3DMRotY.RotYDeg(S3DRot.y);
+	S3DMRotZ.RotZDeg(S3DRot.z);
+	S3DMRot = S3DMRotX * S3DMRotY * S3DMRotZ;
+	S3DMRot.ArrVec[0].Normal3D();
+	S3DMRot.ArrVec[1].Normal3D();
+	S3DMRot.ArrVec[2].Normal3D();
+
+	S3DMPos.Pos(S3DPos);
+
+	// 월드에서의 최종 행렬은
+	S3DW = S3DMScale * S3DMRot * S3DMPos;
+
+	S3DMViewRotX.RotXDeg(S3DViewRot.x);
+	S3DMViewRotY.RotYDeg(S3DViewRot.y);
+	S3DMViewRotZ.RotZDeg(S3DViewRot.z);
+	S3DMViewRot = S3DMViewRotX * S3DMViewRotY * S3DMViewRotZ;
+	// 공전 행렬에 가깝다.
+
+	S3DMView.VIEWTOLH(S3DViewPos, S3DMViewRot.ArrVec[2], S3DMViewRot.ArrVec[1], S3DMViewRot.ArrVec[0]);
+	//S3DMProj.PERSLHDEG(S3DFov, S3DWidth, S3DHeight, S3DNear, S3DFar);
+
+	S3DMProj.ORTHLH(S3DWidth, S3DHeight, S3DNear, S3DFar);
+
+	S3DWVP = S3DW * S3DMView * S3DMProj;
+
+	TRANSDATA Data = TRANSDATA();
+
+	S3DW._00 *= 1;
+	S3DW._11 *= 1;
+
+	if (m_Timer > 8)
+	{
+		m_Timer = -4;
+	}
+	S3DW._30 += m_Timer;
+
+	Data.W = S3DW;
+	Data.V = S3DMView;
+	Data.P = S3DMProj;
+	Data.WV = S3DW * S3DMView;
+	Data.VP = S3DMView * S3DMProj;
+	Data.WVP = S3DW * S3DMView * S3DMProj;
+
+	//텍스쳐에서 전치시키지 않고 받는 옵션도 있지만
+	//그냥 여기서 전치를 시키는걸 선호한다고 하심.
+	Data.AllTP();
+	// 매쉬
+	// 텍스처
+	// 쉐이더
+
+	SGAMEDEVICE::HMainDevice()->RenderBegin();
+
+	SGAMEDEVICE::HMainDevice()->DEFVIEWPORTSET();
+	SGAMEDEVICE::HMainDevice()->DEFRENDERTARGETSET();
+
+	SPTR<SMESH> Mesh = SMESH::Find(L"Rect");
+	Mesh->SettingIB();
+	Mesh->SettingVB();
+
+	SPTR<SVTXSHADER> VTXSH = SVTXSHADER::Find(L"TexShader.fx");
+	VTXSH->Setting();
+	VTXSH->SettingData(0, Data);
+	VTXSH->SettingCB();
+
+	SVEC4 CutUv;
+
+	CutUv.x = (float)1.0 / 5.0f;
+	CutUv.y = (float)0.0f;
+	CutUv.z = (float)1.0 / 5.0f;
+	CutUv.w = (float)1.0 / 3.0f;
+
+
+
+	SPTR<SPIXSHADER> PIXSH = SPIXSHADER::Find(L"TexShader.fx");
+	PIXSH->Setting();
+	PIXSH->SettingData(0, SVEC4::WHITE);
+	PIXSH->SettingCB();
+
+	SPTR<STEX> Tex = STEX::Find(L"square.png");
+	Tex->SettingTex(SSHADER::SHADER_TYPE::ST_PS, 0);
+
+	SPTR<SSMP> LSmp = SSMP::Find(L"LSMP");
+	SPTR<SSMP> PSmp = SSMP::Find(L"PSMP");
+
+	LSmp->Setting(SSHADER::SHADER_TYPE::ST_PS, 0);
+	PSmp->Setting(SSHADER::SHADER_TYPE::ST_PS, 1);
+
+	SGAMEDEVICE::MainContext()->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+
+	SPTR<SBLEND> BlendState = SBLEND::Find(L"DEFBLEND");
+	BlendState->Setting();
+
+	Mesh->RenderIndexed(0);
+
+	{
+		Data = TRANSDATA();
+
+		S3DW._30 += 0.5f;
+		S3DW._32 -= 0.5f;
+
+		S3DW._30 += cosValue;
+		S3DW._31 += sinValue;
+
+		Data.W = S3DW;
+		Data.V = S3DMView;
+		Data.P = S3DMProj;
+		Data.WV = S3DW * S3DMView;
+		Data.VP = S3DMView * S3DMProj;
+		Data.WVP = S3DW * S3DMView * S3DMProj;
+
+		//텍스쳐에서 전치시키지 않고 받는 옵션도 있지만
+		//그냥 여기서 전치를 시키는걸 선호한다고 하심.
+		Data.AllTP();
+		// 매쉬
+		// 텍스처
+		// 쉐이더
+
+		Mesh = SMESH::Find(L"Rect");
+		Mesh->SettingVB();
+		Mesh->SettingIB();
+
+		VTXSH = SVTXSHADER::Find(L"TexShader.fx");
+		VTXSH->Setting();
+		VTXSH->SettingData(0, Data);
+		VTXSH->SettingCB();
+
+		PIXSH = SPIXSHADER::Find(L"TexShader.fx");
+		PIXSH->Setting();
+		PIXSH->SettingData(0, SVEC4::GREEN);
+		PIXSH->SettingCB();
+
+		//SGAMEDEVICE::MainContext()->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+
+		Mesh->RenderIndexed(0);
+	}
+
+	//
+	// 사각형 하나라도 띄우려면
+	// 인풋레이아웃
+	// 버덱스쉐이더
+	// 텍스처
+	// 샘플러 // 이미지
+	// 매쉬
+	// 매쉬를 그리려면 프리미티브 토폴로지
+	// 픽셀쉐이더
+	// 뷰포트는 이미 했지만 리소스로서 관리는 해야한다.
+	// 뎁스와 스텐실 스테이트
+	// 다수의 쉐이더 리소스(랜더타겟뷰 상수버퍼)
+	// 랜더타겟
+	// 블랜드
+	// 스왑체인 <- 요거하나
+
+	// 이안에서 랜더된다.
+
+	SGAMEDEVICE::HMainDevice()->RenderEnd();
+
+
+	------------------------------------------------
+
+	{
+		SGAMEINPUT::CreateKey(L"LMOVE", 'A');
+		SGAMEINPUT::CreateKey(L"RMOVE", 'D');
+		SGAMEINPUT::CreateKey(L"UMOVE", 'W');
+		SGAMEINPUT::CreateKey(L"DMOVE", 'S');
+		SGAMEINPUT::CreateKey(L"FMOVE", 'Q');
+		SGAMEINPUT::CreateKey(L"BMOVE", 'E');
+
+		SGAMEINPUT::CreateKey(L"ROTX", 'T');
+		SGAMEINPUT::CreateKey(L"ROTY", 'G');
+		SGAMEINPUT::CreateKey(L"ROTZ", 'B');
+		SGAMEINPUT::CreateKey(L"ROTMX", 'Y');
+		SGAMEINPUT::CreateKey(L"ROTMY", 'H');
+		SGAMEINPUT::CreateKey(L"ROTMZ", 'N');
+
+		SGAMEINPUT::CreateKey(L"SCALX", 'U');
+		SGAMEINPUT::CreateKey(L"SCALY", 'J');
+		SGAMEINPUT::CreateKey(L"SCALZ", 'M');
+		SGAMEINPUT::CreateKey(L"SCALMX", 'I');
+		SGAMEINPUT::CreateKey(L"SCALMY", 'K');
+		SGAMEINPUT::CreateKey(L"SCALMZ", VK_OEM_COMMA);
+
+		SGAMEINPUT::CreateKey(L"LCAMMOVE", VK_NUMPAD4);
+		SGAMEINPUT::CreateKey(L"RCAMMOVE", VK_NUMPAD6);
+		SGAMEINPUT::CreateKey(L"UCAMMOVE", VK_NUMPAD8);
+		SGAMEINPUT::CreateKey(L"DCAMMOVE", VK_NUMPAD5);
+		SGAMEINPUT::CreateKey(L"FCAMMOVE", VK_NUMPAD7);
+		SGAMEINPUT::CreateKey(L"BCAMMOVE", VK_NUMPAD9);
+
+		SGAMEINPUT::CreateKey(L"CAMROTX", '1');
+		SGAMEINPUT::CreateKey(L"CAMROTY", '2');
+		SGAMEINPUT::CreateKey(L"CAMROTZ", '3');
+		SGAMEINPUT::CreateKey(L"CAMROTMX", '4');
+		SGAMEINPUT::CreateKey(L"CAMROTMY", '5');
+		SGAMEINPUT::CreateKey(L"CAMROTMZ", '6');
+
+		SGAMEDIR m_Dir;
+		m_Dir.MoveParent(L"SCJ_DX");
+		m_Dir.Move(L"BIN");
+		m_Dir.Move(L"TEX");
+
+		STEX::Load(m_Dir.CreateGameFilePath(L"square.png"));
+
+	}

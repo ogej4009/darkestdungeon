@@ -36,8 +36,8 @@ void TitleScene::Loading()
 
 	{
 		GameDic m_Dir;
-		m_Dir.MoveParent(L"SCJ_DX");
-		m_Dir.Move(L"BIN");
+		m_Dir.MoveParent(L"GameFramework");
+		m_Dir.Move(L"res");
 		m_Dir.Move(L"TEX");
 
 		Scene()->COLMGR.Link((unsigned int)RENDERGROUP::RG_PLAYER, (unsigned int)RENDERGROUP::RG_MONSTER);

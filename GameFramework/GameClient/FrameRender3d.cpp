@@ -1,20 +1,20 @@
-#include "S3DRENDERFRAME.h"
-#include <SGAMEWIN.h>
-#include <SGAMEDEVICE.h>
-#include <SMESH.h>
-#include <SVTXSHADER.h>
-#include <SPIXSHADER.h>
-#include <SGAMEINPUT.h>
-#include <SGAMETIME.h>
-#include <SGAMEDIR.h>
-#include <STEX.h>
-#include <SSMP.h>
-#include <SBLEND.h>
-#include <SGAMESCENE.h>
+#include "FrameRender3d.h"
+#include <GameWin.h>
+#include <GameDevice.h>
+#include <GameMesh.h>
+#include <GameVtxShader.h>
+#include <GamePixShader.h>
+#include <GameInput.h>
+#include <GameTime.h>
+#include <GameDic.h>
+#include <GameTexture.h>
+#include <GameSampler.h>
+#include <GameBlend.h>
+#include <GameScene.h>
 
-#include "STITLECOM.h"
-#include "SDUNGEONCOM.h"
-#include "S3DTITLECOM.h"
+#include "TitleScene.h"
+#include "DungeonScene.h"
+
 
 FrameRender3d::FrameRender3d()
 {

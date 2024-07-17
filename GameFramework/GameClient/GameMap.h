@@ -38,6 +38,7 @@ private:
 	public:
 		friend DungeonSprite;
 		friend GameMap;
+
 	public:
 		SPtr<GameImage> m_Corridor_back;
 		SPtr<GameImage> m_Corridor_mid;
@@ -129,7 +130,7 @@ private:
 	CVector m_StartDoorPos;
 	CVector m_EndDoorPos;
 
-private:
+public:
 	GameMap();
 	~GameMap();
 
@@ -154,7 +155,7 @@ public:
 	}
 	//void MoveRoom();
 
-private:
+public:
 	void Init();
 	void UpdatePrev();
 	void Update();

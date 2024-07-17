@@ -4,7 +4,7 @@
 #include "GameScene.h"
 #include "GameCol.h"
 
-class STRNAS;
+class GameTransform;
 class GameLogic : public GameComponent
 {
 public:

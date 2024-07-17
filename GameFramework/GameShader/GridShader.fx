@@ -10,7 +10,8 @@ struct VTX_GRIDOUT
 };
 
 
-//Vertex Shader
+
+//Vertex Shaders
 
 cbuffer TRANSDATA : register(b0)
 {

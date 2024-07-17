@@ -81,6 +81,7 @@
     <OutDir>..\bin\$(Configuration)\$(PlatformTarget)\</OutDir>
     <IntDir>..\bin\$(Configuration)\$(PlatformTarget)\$(ProjectName)\</IntDir>
     <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);..\GameBase\;..\GameEngine\;..\GameLib\;..\tp\FW1FontWrapper-master\FW1FontWrapper\Source\;..\tp\DirectXTex-main\DirectXTex\;</IncludePath>
+    <LibraryPath>$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);$(SolutionDir)\bin\$(Configuration)\$(PlatformTarget)\;</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
@@ -93,6 +94,7 @@
     <OutDir>..\bin\$(Configuration)\$(PlatformTarget)\</OutDir>
     <IntDir>..\bin\$(Configuration)\$(PlatformTarget)\$(ProjectName)\</IntDir>
     <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);..\GameBase\;..\GameEngine\;..\GameLib\;..\tp\FW1FontWrapper-master\FW1FontWrapper\Source\;..\tp\DirectXTex-main\DirectXTex\;</IncludePath>
+    <LibraryPath>$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);$(SolutionDir)\bin\$(Configuration)\$(PlatformTarget)\;</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>

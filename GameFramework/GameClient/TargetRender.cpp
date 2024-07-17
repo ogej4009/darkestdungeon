@@ -35,7 +35,7 @@ void TargetRender::Init()
 	m_TargetActor[3]->Trans()->WPOS({ 0,0,0,0 });
 
 	GameDic m_Dir;
-	m_Dir.MoveParent(L"SCJ_DX");
+	m_Dir.MoveParent(L"GameFramework");
 	if (!m_Dir.TryFindFileRecursive(L"Target"))
 	{
 		ASSERTMSG;
@@ -68,7 +68,7 @@ void TargetRender::Init()
 void TargetRender::HeroTargetInit(const GameString& _HeroName)
 {
 	GameDic m_Dir;
-	m_Dir.MoveParent(L"SCJ_DX");
+	m_Dir.MoveParent(L"GameFramework");
 	if (!m_Dir.TryFindFileRecursive(L"Target"))
 	{
 		ASSERTMSG;

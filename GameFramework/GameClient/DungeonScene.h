@@ -1,7 +1,7 @@
 #pragma once
-#include <SGAMESCENE.h>
-#include <SMINIMAPRENDER.h>
-#include <LOGICHEADER.h>
+#include <GameScene.h>
+#include <GameMiniMap.h>
+#include <LogicHeader.h>
 #include <map>
 
 class TargetRender;

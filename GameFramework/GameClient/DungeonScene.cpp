@@ -1,21 +1,20 @@
-#include <SGAMEDIR.h>
-#include <STEX.h>
-#include <S2DSPRITE.h>
-#include <S2DANI.h>
-#include <SIMGRENDER.h>
-#include <SCAM.h>
-#include <S3DDEBUG.h>
-#include <SGAMEINPUT.h>
+#include <GameDic.h>
+#include <GameTexture.h>
+#include <GameSprite.h>
+#include <GameAni.h>
+#include <GameImage.h>
+#include <GameCam.h>
+#include <GameDebugEn.h>
+#include <GameInput.h>
 
-#include "SDUNGEONCOM.h"
-#include "SGAMECOMBAT.h"
-#include "STEXTREADER.h"
-#include "SJSONREADER.h"
-#include "SGAMEMAP.h"
-#include "SDUNGEONCOM.h"
-#include "SHEROFSMCOM.h"
-#include "SMONSTERFSMCOM.h"
-#include "STARGETRENDERCOM.h"
+#include "Combat.h"
+#include "TextReader.h"
+#include "GameJsonReader.h"
+#include "GameMap.h"
+#include "DungeonScene.h"
+#include "HeroFsm.h"
+#include "MonsterFsm.h"
+#include "TargetRender.h"
 
 
 DungeonScene::DungeonScene() : m_CanMove(true), m_Is_Battle(false)
@@ -75,8 +74,12 @@ void DungeonScene::Loading()
 		SPtr<GameImage> m_UIRender = m_LoadingImage->AddCom<GameImage>(0);
 
 		GameDic m_Dir;
-		m_Dir.MoveParent(L"SCJ_DX");
-		m_Dir.Move(L"BIN");
+		m_Dir.MoveParent(L"GameFramework");
+		m_Dir.Move(L"res");
+		//m_Dir.Move(L"Tex");
+		//m_Dir.Move(L"loading_screen");
+
+		// C:\repo\darkestdungeon\GameFramework\res\Tex\loading_screen
 		if (!m_Dir.TryFindFileRecursive(L"loading_screen"))
 		{
 			ASSERTMSG;
@@ -155,8 +158,8 @@ void DungeonScene::MinimapInit()
 {
 	{
 		GameDic m_Dir;
-		m_Dir.MoveParent(L"SCJ_DX");
-		m_Dir.Move(L"BIN");
+		m_Dir.MoveParent(L"GameFramework");
+		m_Dir.Move(L"res");
 		if (!m_Dir.TryFindFileRecursive(L"panels"))
 		{
 			ASSERTMSG;
@@ -991,7 +994,7 @@ void DungeonScene::ChangeState(ASTATE _State)
 void DungeonScene::HeroTargetInit(GameString& _HeroName, int _pos)
 {
 	GameDic m_Dir;
-	m_Dir.MoveParent(L"SCJ_DX");
+	m_Dir.MoveParent(L"GameFramework");
 	if (!m_Dir.TryFindFileRecursive(_HeroName))
 	{
 		ASSERTMSG;
@@ -1126,7 +1129,7 @@ void DungeonScene::DungeonInit(GameString& _DungeonName)
 void DungeonScene::MonsterInit(GameString& _DungeounName, GameString& _MonsterName, int _DifficultLevel, int _Pos, int ScaleIndex /*= 0*/)
 {
 	GameDic m_Dir;
-	m_Dir.MoveParent(L"SCJ_DX");
+	m_Dir.MoveParent(L"GameFramework");
 	if (!m_Dir.TryFindFileRecursive(L"Monster"))
 	{
 		ASSERTMSG;

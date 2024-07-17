@@ -44,8 +44,8 @@ void SGAMECOMBAT::Init()
 	//select
 	{
 		GameDic m_Dir;
-		m_Dir.MoveParent(L"SCJ_DX");
-		m_Dir.Move(L"BIN");
+		m_Dir.MoveParent(L"GameFramework");
+		m_Dir.Move(L"res");
 		if (!m_Dir.TryFindFileRecursive(L"overlays"))
 		{
 			ASSERTMSG;
@@ -84,8 +84,8 @@ void SGAMECOMBAT::Init()
 	//Combat UI√ ±‚»≠
 	{
 		GameDic m_Dir;
-		m_Dir.MoveParent(L"SCJ_DX");
-		m_Dir.Move(L"BIN");
+		m_Dir.MoveParent(L"GameFramework");
+		m_Dir.Move(L"res");
 		if (!m_Dir.TryFindFileRecursive(L"icons_equip"))
 		{
 			ASSERTMSG;

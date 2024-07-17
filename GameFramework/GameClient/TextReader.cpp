@@ -1095,7 +1095,7 @@ bool TextReader::LoadBinaryData(GameString& _Name, bool b_Is_Monster)
 {
 	bool b_Can_Open = true;
 	GameDic m_Dir;
-	m_Dir.MoveParent(L"SCJ_DX");
+	m_Dir.MoveParent(L"GameFramework");
 	if (false == m_Dir.TryFindFileRecursive(L"Data"))
 	{
 		ASSERTMSG;
@@ -1288,7 +1288,7 @@ void TextReader::SaveBinaryData(GameString& _Name)
 	if (nullptr != m_ParseData)
 	{
 		GameDic m_Dir;
-		m_Dir.MoveParent(L"SCJ_DX");
+		m_Dir.MoveParent(L"GameFramework");
 		if (false == m_Dir.TryFindFileRecursive(L"Data"))
 		{
 			ASSERTMSG;
@@ -1343,7 +1343,7 @@ void TextReader::SaveBinaryData(GameString& _Name)
 	else
 	{
 		GameDic m_Dir;
-		m_Dir.MoveParent(L"SCJ_DX");
+		m_Dir.MoveParent(L"GameFramework"); 
 		if (false == m_Dir.TryFindFileRecursive(L"Data"))
 		{
 			ASSERTMSG;

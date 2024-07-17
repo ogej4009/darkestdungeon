@@ -365,8 +365,8 @@ float	S3DDeg = 0.0f;
 		SGAMEINPUT::CreateKey(L"CAMROTMZ", '6');
 
 		SGAMEDIR m_Dir;
-		m_Dir.MoveParent(L"SCJ_DX");
-		m_Dir.Move(L"BIN");
+		m_Dir.MoveParent(L"GameFramework");
+		m_Dir.Move(L"res");
 		m_Dir.Move(L"TEX");
 
 		STEX::Load(m_Dir.CreateGameFilePath(L"square.png"));

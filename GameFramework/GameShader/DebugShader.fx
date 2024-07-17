@@ -8,8 +8,9 @@ struct VTX2D_OUT
     float4 vPOS : SV_Position;
 };
 
+
 // SPINE
-//Vertex Shader
+//Vertex Shaders
 
 cbuffer TRANSDATA : register(b0)
 {

@@ -1,21 +1,23 @@
-#include "SGAMEMAP.h"
-#include <SGAMEDIR.h>
-#include <S2DSPRITE.h>
-#include <SGAMEREF.h>
-#include <SGAMECOM.h>
-#include <SGAMEACTOR.h>
-#include <SGAMESCENE.h>
-#include <SRENDERMGR.h>
-#include <SIMGRENDER.h>
-#include <LOGICHEADER.h>
-#include <SGAMETIME.h>
-#include <SGAMEINPUT.h>
-#include <SCAM.h>
+#include "GameMap.h"
+#include <GameDic.h>
+#include <GameSprite.h>
+#include <GameRef.h>
+#include <GameComponent.h>
+#include <GameActor.h>
+#include <GameScene.h>
+#include <GameRenderMgr.h>
+#include <GameImage.h>
+#include <LogicHeader.h>
+#include <GameTime.h>
+#include <GameInput.h>
+#include <GameCam.h>
 
-GameMap::GameMap() : m_FadeAlpha({ 1.0f, 1.0f, 1.0f, 0.0f })
-, m_FadeTimer(0)
-, m_HalfFadeTimer(0)
-, m_State(MapState::Room)
+// directxtex.lib
+GameMap::GameMap() : 
+	m_FadeAlpha({ 1.0f, 1.0f, 1.0f, 0.0f })
+	, m_FadeTimer(0)
+	, m_HalfFadeTimer(0)
+	, m_State(MapState::Room)
 {
 
 }
@@ -160,7 +162,7 @@ bool GameMap::MapLoad(GameString _Name)
 	m_DungeonSprite->m_DoorSprite.reserve(2);
 
 	GameDic Dir;
-	Dir.MoveParent(L"SCJ_DX");
+	Dir.MoveParent(L"GameFramework");
 
 	if (Name() == L"")
 	{
@@ -219,8 +221,8 @@ bool GameMap::MapLoad(GameString _Name)
 
 	{
 		GameDic m_Dir;
-		m_Dir.MoveParent(L"SCJ_DX");
-		m_Dir.Move(L"BIN");
+		m_Dir.MoveParent(L"GameFramework");
+		m_Dir.Move(L"res");
 		if (!m_Dir.TryFindFileRecursive(L"panels"))
 		{
 			ASSERTMSG;

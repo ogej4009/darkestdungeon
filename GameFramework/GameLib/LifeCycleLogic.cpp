@@ -1,5 +1,5 @@
-#include "SDEATHLOGIC.h"
-#include <SGAMETIME.h>
+#include "LifeCycleLogic.h"
+#include <GameTime.h>
 
 LifeCycleLogic::LifeCycleLogic() : m_DeathTime(0.0f)
 {

@@ -1,4 +1,4 @@
-#include "SDEPTHSTENCIL.h"
+#include "GameDepthStencil.h"
 
 
 GameDepthStencil::GameDepthStencil()

@@ -5,12 +5,12 @@
 #include <map>
 
 //MINIMAPRENDER->Create()형태로 추가
-class SMAPSCENECOM;
+class ToolMaker;
 class GameMap;
 class GameMiniMap : public GameRenderer
 {
 public:
-	friend SMAPSCENECOM;
+	friend ToolMaker;
 
 	enum class RoomSpriteName
 	{
@@ -334,7 +334,7 @@ private:
 
 	ROADBLOCK* CreateRoad(const CVector& _Pos)
 	{
-		return CreateRoad((int)std::roundf(_Pos.x), (int)std::roundf(_Pos.y));
+		return CreateRoad((int)roundf(_Pos.x), (int)roundf(_Pos.y));
 	}
 
 	ROADBLOCK* CreateRoad(const int _X, const int _Y)

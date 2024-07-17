@@ -13,7 +13,8 @@ struct VTX2D_OUT
 };
 
 
-//Vertex Shader
+
+//Vertex Shaders
 
 cbuffer TRANSDATA : register(b0)
 {

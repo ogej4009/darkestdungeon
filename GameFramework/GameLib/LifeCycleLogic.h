@@ -1,5 +1,5 @@
 #pragma once
-#include <SLOGIC.h>
+#include <GameLogic.h>
 
 class LifeCycleLogic : public GameLogic
 {
